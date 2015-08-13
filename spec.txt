@@ -1,0 +1,55 @@
+Broadly speaking a article is a collection of block and line level elements. A block level element can contain line level elements. Line level elements cannot contain block level elements.
+
+
+Block Level Elements:
+
+[- header 1]
+[-- header 2]
+[--- header 3]
+[---- header 4]
+[----- header 5]
+[------ header 6]
+
+A paragraph, maps to a paragraph in HTML:
+[% paragraph]
+
+An image, maps to an image in HTML:
+[^ http://an-image]
+
+A numbered list, maps to a numbered list in HTML:
+[# [one]
+   [two]
+   [three]]
+
+A bullet list, maps to a unordered list in HTML:
+[* [one]
+   [two]
+   [three]]
+
+
+Line Level Elements:
+
+A link, maps to an anchor in HTML:
+[@ [text] [address]]
+
+Bold the enclosed text, maps to a bold span tag in HTML:
+[! bold]
+
+Italic the encosed text, maps to a italic span tag in HTML:
+[$ italic]
+
+
+Some examples:
+
+[% i am [$ sly]]
+
+[% i am [! ANGRY]]
+
+[- [@ [text] [address]]]
+
+[- A Link to Google [@ [Google [[note]]] [http://www.google.com]] and More.]
+
+              numbered-list = <start-tag> <numbered-list-start> (numbered-list-item)* <end-tag>
+              <numbered-list-start> = #'\\#'
+
+              numbered-list-item
