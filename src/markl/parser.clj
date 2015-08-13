@@ -3,39 +3,47 @@
 
 (def parser (insta/parser
               "
-              document = (line-level-elements | block-level-elements | <line-break>)*
+              document = (line-level-elements / block-level-elements / <line-break>)*
 
               (* Block Level Elements *)
 
-              <block-level-elements> = header-1 | header-2 | header-3 | header-4 | header-5 | header-6 | paragraph | image
+              <block-level-elements> = header-6 / header-5 / header-4 / header-3 / header-2 / header-1 / paragraph / image / numbered-list / bulleted-list
 
-              header-1 = <start-tag> <header1-start> (line-level-elements | characters)* <end-tag>
+              header-1 = <start-tag> <header1-start> (line-level-elements / characters)* <end-tag>
               <header1-start> = #'- ?'
 
-              header-2 = <start-tag> <header2-start> (line-level-elements | characters)* <end-tag>
+              header-2 = <start-tag> <header2-start> (line-level-elements / characters)* <end-tag>
               <header2-start> = #'-- ?'
 
-              header-3 = <start-tag> <header3-start> (line-level-elements | characters)* <end-tag>
+              header-3 = <start-tag> <header3-start> (line-level-elements / characters)* <end-tag>
               <header3-start> = #'--- ?'
 
-              header-4 = <start-tag> <header4-start> (line-level-elements | characters)* <end-tag>
+              header-4 = <start-tag> <header4-start> (line-level-elements / characters)* <end-tag>
               <header4-start> = #'---- ?'
 
-              header-5 = <start-tag> <header5-start> (line-level-elements | characters)* <end-tag>
+              header-5 = <start-tag> <header5-start> (line-level-elements / characters)* <end-tag>
               <header5-start> = #'----- ?'
 
-              header-6 = <start-tag> <header6-start> (line-level-elements | characters)* <end-tag>
+              header-6 = <start-tag> <header6-start> (line-level-elements / characters)* <end-tag>
               <header6-start> = #'------ ?'
 
-              paragraph = <start-tag> <paragraph-start> (line-level-elements | characters)* <end-tag>
+              paragraph = <start-tag> <paragraph-start> (line-level-elements / characters)* <end-tag>
               <paragraph-start> = #'% ?'
+
+              numbered-list = <start-tag> <numbered-list-start> (list-item / <line-break>)* <end-tag>
+              <numbered-list-start> = #'\\# ?'
+
+              bulleted-list = <start-tag> <bulleted-list-start> (list-item / <line-break>)* <end-tag>
+              <bulleted-list-start> = #'\\* ?'
+
+              <list-item> = line-level-elements / <start-tag> characters <end-tag>
 
               image = <start-tag> <image-start> characters <end-tag>
               <image-start> = #'\\^ ?'
 
               (* Line Level Elements *)
 
-              <line-level-elements> = link | bold | italic
+              <line-level-elements> = link / bold / italic
 
               link = <start-tag> <anchor-start> <start-tag> characters <end-tag> <line-break>? <start-tag> characters <end-tag> <end-tag>
               <anchor-start> = #'@ ?'

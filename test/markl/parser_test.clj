@@ -27,6 +27,12 @@
        (fact "it parses a image element"
              (run-parser "[^ http://location/image.jpg]") => [:document [:image "http://location/image.jpg"]])
 
+       (fact "it parsed a numbered list element"
+             (run-parser "[# [one] [two]]") => [:document [:numbered-list "one" "two"]])
+
+       (fact "it parsed a bulleted list element"
+             (run-parser "[* [one] [two]]") => [:document [:bulleted-list "one" "two"]])
+
        (fact "it parses a link element"
              (run-parser "[@ [Google] [http://www.google.com]]") => [:document [:link "Google" "http://www.google.com"]])
 

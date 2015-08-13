@@ -35,7 +35,7 @@ A link, maps to an anchor in HTML:
 Bold the enclosed text, maps to a bold span tag in HTML:
 [! bold]
 
-Italic the encosed text, maps to a italic span tag in HTML:
+Italic the enclosed text, maps to a italic span tag in HTML:
 [$ italic]
 
 
@@ -48,8 +48,3 @@ Some examples:
 [- [@ [text] [address]]]
 
 [- A Link to Google [@ [Google [[note]]] [http://www.google.com]] and More.]
-
-              numbered-list = <start-tag> <numbered-list-start> (numbered-list-item)* <end-tag>
-              <numbered-list-start> = #'\\#'
-
-              numbered-list-item
