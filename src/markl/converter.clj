@@ -3,9 +3,14 @@
             [markl.transformer :as t]
             [hiccup.core :as c]))
 
-(defn markl->html
+(defn markl->hiccup
   [s]
   (-> s
       (p/parse)
-      (t/transform)
+      (t/transform)))
+
+(defn markl->html
+  [s]
+  (-> s
+      (markl->hiccup)
       (c/html)))
