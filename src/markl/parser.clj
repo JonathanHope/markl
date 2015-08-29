@@ -65,7 +65,8 @@
               escaped-close-bracket = #'\\]\\]'
               "))
 
-(defn run-parser
+(defn parse
+  "Parse a markl string into hiccup output."
   [s]
   (->> s
        parser
