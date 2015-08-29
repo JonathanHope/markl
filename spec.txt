@@ -32,6 +32,9 @@ Line Level Elements:
 A link, maps to an anchor in HTML:
 [@ [text] [address]]
 
+Some code, maps to code in HTML.
+[; Code]
+
 Bold the enclosed text, maps to a bold span tag in HTML:
 [! bold]
 

@@ -37,6 +37,9 @@
        (fact "it parses a link element"
              (parse "[@ [Google] [http://www.google.com]]") => [:document [:link "Google" "http://www.google.com"]])
 
+       (fact "it parses a code element"
+             (parse "[; code]") => [:document [:code "code"]])
+
        (fact "it parses a bold element"
              (parse "[! bold text]") => [:document [:bold "bold text"]])
 

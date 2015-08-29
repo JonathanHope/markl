@@ -43,10 +43,13 @@
 
               (* Line Level Elements *)
 
-              <line-level-elements> = link / bold / italic
+              <line-level-elements> = link / bold / italic / code
 
               link = <start-tag> <anchor-start> <start-tag> characters <end-tag> <line-break>? <start-tag> characters <end-tag> <end-tag>
               <anchor-start> = #'@ ?'
+
+              code = <start-tag> <code-start> characters <end-tag>
+              <code-start> = #'; ?'
 
               bold = <start-tag> <bold-start> characters <end-tag>
               <bold-start> = #'! ?'

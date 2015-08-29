@@ -40,6 +40,9 @@
        (fact "it transforms a link element"
              (transform [:document [:link "Google" "http://www.google.com"]]) => [:article [:a {:src "http://www.google.com"} "Google"]])
 
+       (fact "it transforms a code element"
+             (transform [:document [:code "code"]]) => [:article [:code "code"]])
+
        (fact "it transforms a bold element"
              (transform [:document [:bold "bold text"]]) => [:article [:strong "bold text"]])
 
